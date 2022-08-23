@@ -37,5 +37,5 @@ function currentPosition(position) {
 navigator.geolocation.getCurrentPosition(currentPosition);
 
 let dateElement = document.querySelector("#date");
-let currentTime = new Date();
+//let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);

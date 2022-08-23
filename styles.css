@@ -2,9 +2,14 @@ p {
   color: white;
 }
 
+a {
+  color: rgb(91, 198, 128);
+  text-decoration: none;
+}
 .location {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
+  margin: 0;
 }
 #float-container {
   padding: 20px;
@@ -38,8 +43,8 @@ p {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 600px;
-  height: 400px;
+  max-width: 600px;
+  max-height: 400px;
   padding: 50px;
   background-color: #7882a4;
   border-radius: 4px;
@@ -92,4 +97,24 @@ p {
   box-shadow: inset 2px 2px 8px rgb(55 94 148 / 30%),
     inset -3px -2px 5px rgb(255 255 255 / 80%);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
