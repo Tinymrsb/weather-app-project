@@ -1,4 +1,6 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  //calculate time and date
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -8,19 +10,18 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
 
-  let dayIndex = date.getDay();
   let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
-  let day = days[dayIndex];
+  let day = days[date.getDate()];
+  return `${day} ${hours}:${minutes}`;
 }
 
 function displayWeather(response) {
-  let weatherDiv = document.querySelector("#todaysWeather");
+  let locationTemp = document.querySelector("#locationTemp");
   let temperature = Math.round(response.data.main.temp);
   let city1 = response.data.name;
-  let location = document.querySelector("#location");
-  location.innerHTML = city1;
-
-  weatherDiv.innerHTML = `It is currently ${temperature} degrees.`;
+  let dateElement = document.querySelector("#date");
+  locationTemp.innerHTML = `${city1} ${temperature}°`;
+  dateElement.innerHTML = formatDate(response.date.dt * 1000);
 }
 
 let city = "Nashville";
@@ -36,6 +37,20 @@ function currentPosition(position) {
 
 navigator.geolocation.getCurrentPosition(currentPosition);
 
-let dateElement = document.querySelector("#date");
-//let currentTime = new Date();
-dateElement.innerHTML = formatDate(currentTime);
+// search engine
+function search(city) {
+  let apiKey = "dc0706dfd0afd6a4fbfc21adb5196f26";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+search("Nashville");

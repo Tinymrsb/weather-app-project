@@ -16,20 +16,23 @@
   <body>
     <div class="pattern">
       <div class="mainFrame">
-        <p class="location" id="location">LOCATION</p>
-        <p id="todaysWeather">Today's Weather</p>
-        <p class="time">TIME</p>
-        <p class="date" id="date">DATE</p>
+        <p class="location" id="locationTemp">
+          LOCATION <span class="todaysWeather" id="todaysWeather">TEMP</span>
+        </p>
 
-        <form>
+        <p class="date" id="date">Monday <span class="time">05:00</span></p>
+        <p class="description">Clear Sky</p>
+        <form id="search-form">
           <input
             type="text"
             class="form-control"
             placeholder="Search for a city..."
-            id="inputDefault"
+            id="city-input"
           />
 
-          <button type="submit" class="btn" id="submitButton">Submit</button>
+          <button type="submit" value="search" class="btn" id="submitButton">
+            Submit
+          </button>
         </form>
         <div class="futureWeather" id="float-container">
           <div id="float-child1">
