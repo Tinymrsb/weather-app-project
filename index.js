@@ -37,14 +37,24 @@ let months = [
 let month = months[now.getMonth()];
 
 let newDate = document.querySelector("#dateToday");
-newDate.innerHTML = `<strong>${day}</strong> ${month} ${date}, ${year} ${hour}:${minutes}`;
+newDate.innerHTML = `<strong>${day}</strong><br /> ${month} ${date}, ${year} ${hour}:${minutes}`;
 //end time and date
 
+//forecast
+//forecast
+
+//weather display
 function displayWeather(response) {
   let locationTemp = document.querySelector("#locationTemp");
   let temperature = Math.round(response.data.main.temp);
   let city1 = response.data.name;
+  let description = document.querySelector("#description");
+
+
+
+  description.innerHTML = response.data.weather[0].description;
   locationTemp.innerHTML = `${city1} ${temperature}°`;
+  
 }
 
 let city = "Nashville";
@@ -78,3 +88,5 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("Nashville");
+
+
