@@ -4,7 +4,8 @@
 }
 
 p,
-ul {
+ul,
+span {
   color: white;
 }
 
@@ -41,6 +42,10 @@ li {
 
 .futureWeather {
   text-align: right;
+}
+
+#icon {
+  height: 80px;
 }
 
 .leaf {

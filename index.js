@@ -42,6 +42,11 @@ newDate.innerHTML = `<strong>${day}</strong><br /> ${month} ${date}, ${year} ${h
 
 //forecast
 //forecast
+function getForecast(coordinates) {
+  let apiKey = "dc0706dfd0afd6a4fbfc21adb5196f26";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 //weather display
 function displayWeather(response) {
@@ -49,12 +54,17 @@ function displayWeather(response) {
   let temperature = Math.round(response.data.main.temp);
   let city1 = response.data.name;
   let description = document.querySelector("#description");
-
-
+  let iconElement = document.querySelector("#icon");
 
   description.innerHTML = response.data.weather[0].description;
   locationTemp.innerHTML = `${city1} ${temperature}°`;
-  
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 let city = "Nashville";
@@ -74,8 +84,8 @@ navigator.geolocation.getCurrentPosition(currentPosition);
 // search engine
 function search(city) {
   let apiKey = "dc0706dfd0afd6a4fbfc21adb5196f26";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayWeather);
+  let apiUrl1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl1).then(displayWeather);
 }
 
 function handleSubmit(event) {
@@ -88,5 +98,3 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("Nashville");
-
-

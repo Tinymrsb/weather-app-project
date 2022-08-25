@@ -21,7 +21,13 @@
         </p>
 
         <p class="dateToday" id="dateToday">Monday 05:00</p>
-        <p class="description" id="description">Description</p>
+        <div class="iconDescription">
+          <img 
+            src="src/sun.png"
+           alt="Clear"
+           id="icon"></img>
+           <p class="description" id="description"></p>
+        </div>
 
         <form id="search-form">
           <input
@@ -29,6 +35,8 @@
             class="form-control"
             placeholder="Search for a city..."
             id="city-input"
+            autocomplete="off"
+            onfocus="this.value=''"
           />
 
           <button type="submit" value="search" class="btn" id="submitButton">
@@ -46,7 +54,7 @@
               <a
                 href="https://github.com/Tinymrsb/weather-app-project"
                 target="_blank"
-                ><i class="fa-brands fa-github" id="icon"></i
+                ><i class="fa-brands fa-github"></i
               ></a>
             </p>
           </div>
