@@ -37,10 +37,11 @@ let months = [
 let month = months[now.getMonth()];
 
 let newDate = document.querySelector("#dateToday");
-newDate.innerHTML = `<strong>${day}</strong><br /> ${month} ${date}, ${year} ${hour}:${minutes}`;
+newDate.innerHTML = `<strong>${day}</strong><br /> <br />${month} ${date}, ${year} ${hour}:${minutes}`;
 //end time and date
 
 //forecast
+
 //forecast
 function getForecast(coordinates) {
   let apiKey = "dc0706dfd0afd6a4fbfc21adb5196f26";
@@ -55,14 +56,20 @@ function displayWeather(response) {
   let city1 = response.data.name;
   let description = document.querySelector("#description");
   let iconElement = document.querySelector("#icon");
+  let windElement = document.querySelector("#windSpeed");
+  let humidityElement = document.querySelector("#humidity");
 
-  description.innerHTML = response.data.weather[0].description;
-  locationTemp.innerHTML = `${city1} ${temperature}°`;
+  description.innerHTML =
+    `Description: ` + response.data.weather[0].description;
+  locationTemp.innerHTML = `${city1} ${temperature}`;
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  windElement.innerHTML =
+    `Wind: ` + Math.round(response.data.wind.speed) + ` km/h`;
+  humidityElement.innerHTML = `Humidity: ` + response.data.main.humidity + `%`;
 
   getForecast(response.data.coord);
 }

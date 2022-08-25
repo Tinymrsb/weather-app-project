@@ -16,18 +16,20 @@
   <body>
     <div class="pattern">
       <div class="mainFrame">
-        <p class="location" id="locationTemp">
-          LOCATION <span class="todaysWeather">TEMP</span>
-        </p>
+        <span class="location" id="locationTemp">
+           LOCATION </span><span class="unit">°C|<a href="#" class="unitConversion">°F</a></span>
 
         <p class="dateToday" id="dateToday">Monday 05:00</p>
+        <p class="windSpeed" id="windSpeed">Wind Speed</p>
+        <p class="humidity" id="humidity">Humidity</p>
+
+        <p id="description"></p>
         <div class="iconDescription">
           <img 
-            src="src/sun.png"
+            src=""
            alt="Clear"
            id="icon"></img>
-           <p class="description" id="description"></p>
-        </div>
+         </div>
 
         <form id="search-form">
           <input
@@ -46,7 +48,7 @@
         <div class="weather-forecast" id="forecast">forecast</div>
         <div class="futureWeather" id="float-container">
           <div id="float-child1">
-            <p class="leaf"><i class="fa-solid fa-leaf"></i></p>
+            <p class="leaf"></p>
           </div>
           <div id="float-child2">
             <p class="repo-link">
@@ -54,7 +56,7 @@
               <a
                 href="https://github.com/Tinymrsb/weather-app-project"
                 target="_blank"
-                ><i class="fa-brands fa-github"></i
+                class="github"><i class="fa-brands fa-github"></i
               ></a>
             </p>
           </div>

@@ -10,6 +10,15 @@ span {
 }
 
 a {
+  text-decoration: none;
+  color: #bed1e6;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.github {
   color: rgb(91, 198, 128);
   text-decoration: none;
   font-size: large;
@@ -20,7 +29,8 @@ li {
   line-height: 19px;
 }
 
-.location {
+.location,
+.unit {
   font-family: silkscreen;
   font-weight: bold;
   font-size: 40px;
@@ -45,13 +55,8 @@ li {
 }
 
 #icon {
-  height: 80px;
-}
-
-.leaf {
-  font-size: 60px;
-  text-align: center;
-  margin: 20px;
+  display: block;
+  margin: 0 auto;
 }
 
 .mainFrame {
