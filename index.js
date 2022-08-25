@@ -1,27 +1,50 @@
-function formatDate(timestamp) {
-  //calculate time and date
-  let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  let days = ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"];
-  let day = days[date.getDate()];
-  return `${day} ${hours}:${minutes}`;
+//time and date
+let now = new Date();
+let date = now.getDate();
+let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
 }
+let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+let year = now.getFullYear();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+let months = [
+  "Jan",
+  "Feb",
+  "March",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+let month = months[now.getMonth()];
+
+let newDate = document.querySelector("#dateToday");
+newDate.innerHTML = `<strong>${day}</strong> ${month} ${date}, ${year} ${hour}:${minutes}`;
+//end time and date
 
 function displayWeather(response) {
   let locationTemp = document.querySelector("#locationTemp");
   let temperature = Math.round(response.data.main.temp);
   let city1 = response.data.name;
-  let dateElement = document.querySelector("#date");
   locationTemp.innerHTML = `${city1} ${temperature}°`;
-  dateElement.innerHTML = formatDate(response.date.dt * 1000);
 }
 
 let city = "Nashville";
@@ -29,6 +52,7 @@ let key = "dc0706dfd0afd6a4fbfc21adb5196f26";
 let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
 
 axios.get(url).then(displayWeather);
+
 //location
 function currentPosition(position) {
   console.log(position.coords.latitude);

@@ -26,18 +26,17 @@ li {
   margin: 0;
 }
 #float-container {
-  padding: 20px;
+  padding: 60px;
 }
 
 #float-child1 {
-  width: 30%;
+  width: 40%;
   float: left;
 }
 
 #float-child2 {
-  width: 30%;
+  width: 40%;
   float: right;
-  padding: 20px;
 }
 
 .futureWeather {
@@ -58,7 +57,7 @@ li {
   bottom: 0;
   left: 0;
   max-width: 600px;
-  max-height: 400px;
+  max-height: 500px;
   padding: 60px;
   background-color: #7882a4;
   border-radius: 9px;
