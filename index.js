@@ -52,12 +52,14 @@ function getForecast(coordinates) {
 //weather display
 function displayWeather(response) {
   let locationTemp = document.querySelector("#locationTemp");
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(celsiusTemperature);
   let city1 = response.data.name;
   let description = document.querySelector("#description");
   let iconElement = document.querySelector("#icon");
   let windElement = document.querySelector("#windSpeed");
   let humidityElement = document.querySelector("#humidity");
+
+  celsiusTemperature = response.data.main.temp;
 
   description.innerHTML =
     `Description: ` + response.data.weather[0].description;
@@ -101,7 +103,20 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 search("Nashville");
