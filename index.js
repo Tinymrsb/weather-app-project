@@ -51,6 +51,7 @@ function getForecast(coordinates) {
 
 //weather display
 function displayWeather(response) {
+  let locationCity = document.querySelector("#locationCity");
   let locationTemp = document.querySelector("#locationTemp");
   let temperature = Math.round(celsiusTemperature);
   let city1 = response.data.name;
@@ -63,7 +64,8 @@ function displayWeather(response) {
 
   description.innerHTML =
     `Description: ` + response.data.weather[0].description;
-  locationTemp.innerHTML = `${city1} ${temperature}`;
+  locationCity.innerHTML = `${city1} `;
+  locationTemp.innerHTML = `${temperature}`;
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -105,11 +107,18 @@ function handleSubmit(event) {
 
 function displayFahrenheitTemp(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
+  let temperatureElement = document.querySelector("#locationTemp");
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
 
 let celsiusTemperature = null;
 
@@ -118,5 +127,8 @@ form.addEventListener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Nashville");

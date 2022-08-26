@@ -30,7 +30,8 @@ li {
 }
 
 .location,
-.unit {
+.unit,
+#actualTemp {
   font-family: silkscreen;
   font-weight: bold;
   font-size: 40px;
@@ -67,7 +68,7 @@ li {
   bottom: 0;
   left: 0;
   max-width: 600px;
-  max-height: 500px;
+  max-height: 600px;
   padding: 60px;
   background-color: #7882a4;
   border-radius: 9px;
