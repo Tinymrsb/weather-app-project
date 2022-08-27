@@ -107,6 +107,15 @@ li {
   color: white;
 }
 
+.weather-forecast-date {
+  color: white;
+  font-family: silkscreen;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.6;
+}
+
 .form-control {
   display: block;
   margin: 40px auto 10px auto;
@@ -128,20 +137,35 @@ li {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  html {
+    zoom: 0.8;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  html {
+    zoom: 0.85;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  html {
+    zoom: 0.9;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  html {
+    zoom: 0.95;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+  html {
+    zoom: 1;
+  }
 }

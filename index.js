@@ -37,16 +37,53 @@ let months = [
 let month = months[now.getMonth()];
 
 let newDate = document.querySelector("#dateToday");
-newDate.innerHTML = `<strong>${day}</strong><br /> <br />${month} ${date}, ${year} ${hour}:${minutes}`;
+newDate.innerHTML = `<strong>${day}</strong> ${month} ${date}, ${year} ${hour}:${minutes}`;
 //end time and date
 
 //forecast
+function displayWeekForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+         <div class="weather-forecast-date">${day}</div>
+           <img
+           src="http://openweathermap.org/img/wn${
+             forecastDay.weather[0].icon
+           }@2x.png"
+           alt=""
+           width="42"
+           />
+          <div class="weather-forecast-temperatures">
+           <span class="weather-forecast-temperature-max">${Math.round(
+             forecastDay.temp.max
+           )}°</span>
+            <span class="weather-forecast-temperature-min">${Math.round(
+              forecastDay.temp.min
+            )}°</span>
+          </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 //forecast
 function getForecast(coordinates) {
-  let apiKey = "dc0706dfd0afd6a4fbfc21adb5196f26";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  let apiKeyForecast = "dc0706dfd0afd6a4fbfc21adb5196f26";
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKeyForecast}&units=metric`;
+  axios.get(apiUrlForecast).then(displayWeekForecast);
 }
 
 //weather display
@@ -115,8 +152,8 @@ function displayFahrenheitTemp(event) {
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
+  //celsiusLink.classList.add("active");
+  //fahrenheitLink.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
@@ -128,7 +165,7 @@ form.addEventListener("submit", handleSubmit);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
+//let celsiusLink = document.querySelector("#celsius-link");
+//celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Nashville");

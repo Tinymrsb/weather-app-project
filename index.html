@@ -18,7 +18,7 @@
       <div class="mainFrame">
       <span class="location" id="locationCity">
            LOCATION </span><span class="location" id="locationTemp">
-           TEMP </span> <span id="actualTemp"></span><span class="unit">°C|<a href="#" class="fahrenheit-link" id="fahrenheit-link">°F</a></span>
+           TEMP </span> <span id="actualTemp"></span><span class="unit"><a href="#" class="celcius-link">°C</a>|<a href="#" class="fahrenheit-link" id="fahrenheit-link">°F</a></span>
           
 
         <p class="dateToday" id="dateToday">Monday 05:00</p>
@@ -47,12 +47,14 @@
             Submit
           </button>
         </form>
-       <!-- <div class="weather-forecast" id="forecast">forecast</div> -->
+
+          <!--Weather forecast Div-->
+      <div class="weather-forecast" id="forecast">
+       </div>
+          <!--Weather forecast Div-->
+
         <div class="futureWeather" id="float-container">
-          <div id="float-child1">
-            <p class="leaf"></p>
-          </div>
-          <div id="float-child2">
+             <div id="float-child2">
             <p class="repo-link">
               Open-source code
               <a
