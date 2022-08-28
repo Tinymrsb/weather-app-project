@@ -9,12 +9,6 @@ span {
   color: white;
 }
 
-.celcius-link,
-.fahrenheit-link {
-  text-decoration: none;
-  color: #bed1e6;
-}
-
 a:hover {
   text-decoration: underline;
 }
@@ -32,7 +26,8 @@ li {
 
 .location,
 .unit,
-#actualTemp {
+#actualTemp,
+.degrees {
   font-family: silkscreen;
   font-weight: bold;
   font-size: 40px;
@@ -68,7 +63,7 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
-  max-width: 700px;
+  max-width: 800px;
   max-height: 900px;
   padding: 60px;
   background-color: #7882a4;
@@ -94,7 +89,7 @@ li {
 #submitButton,
 #current-location {
   display: block;
-  margin: 0px auto;
+  margin: 10px auto 30px auto;
   color: #7e8391;
   background-color: #f0f5fa;
   background-clip: padding-box;
@@ -111,7 +106,6 @@ li {
 }
 
 #current-location {
- margin-top: 10px;
 }
 
 .weather-forecast-date {
