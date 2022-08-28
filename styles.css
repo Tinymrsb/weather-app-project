@@ -9,7 +9,8 @@ span {
   color: white;
 }
 
-a {
+.celcius-link,
+.fahrenheit-link {
   text-decoration: none;
   color: #bed1e6;
 }
@@ -67,8 +68,8 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
-  max-width: 600px;
-  max-height: 600px;
+  max-width: 700px;
+  max-height: 900px;
   padding: 60px;
   background-color: #7882a4;
   border-radius: 9px;
@@ -90,7 +91,8 @@ li {
   font-size: small;
 }
 
-#submitButton {
+#submitButton,
+#current-location {
   display: block;
   margin: 0px auto;
   color: #7e8391;
@@ -102,9 +104,14 @@ li {
   box-shadow: inset 2px 2px 8px rgb(55 94 148 / 30%),
     inset -3px -2px 5px rgb(255 255 255 / 80%);
 }
-#submitButton:hover {
+#submitButton:hover,
+#current-location:hover {
   background-color: #838ba6;
   color: white;
+}
+
+#current-location {
+ margin-top: 10px;
 }
 
 .weather-forecast-date {

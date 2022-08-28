@@ -50,14 +50,14 @@ function displayWeekForecast(response) {
   let days = ["Thu", "Fri", "Sat", "Sun"];
 
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (day) {
+  forecast.forEach(function (forecastDay, index) {
     forecastHTML =
       forecastHTML +
       `
       <div class="col-2">
-         <div class="weather-forecast-date">${day}</div>
+         <div class="weather-forecast-date">${forecastDay.dt}</div>
            <img
-           src="http://openweathermap.org/img/wn${
+           src="http://openweathermap.org/img/wn/${
              forecastDay.weather[0].icon
            }@2x.png"
            alt=""
@@ -81,7 +81,7 @@ function displayWeekForecast(response) {
 
 //forecast
 function getForecast(coordinates) {
-  let apiKeyForecast = "dc0706dfd0afd6a4fbfc21adb5196f26";
+  let apiKeyForecast = "a43564c91a6c605aeb564c9ed02e3858";
   let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKeyForecast}&units=metric`;
   axios.get(apiUrlForecast).then(displayWeekForecast);
 }
@@ -115,6 +115,19 @@ function displayWeather(response) {
   getForecast(response.data.coord);
 }
 
+// search city
+function search(city) {
+  let apiKey = "dc0706dfd0afd6a4fbfc21adb5196f26";
+  let apiUrl1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl1).then(displayWeather);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
 let city = "Nashville";
 let key = "dc0706dfd0afd6a4fbfc21adb5196f26";
 let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
@@ -129,18 +142,16 @@ function currentPosition(position) {
 
 navigator.geolocation.getCurrentPosition(currentPosition);
 
-// search engine
-function search(city) {
-  let apiKey = "dc0706dfd0afd6a4fbfc21adb5196f26";
-  let apiUrl1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl1).then(displayWeather);
-}
-
-function handleSubmit(event) {
+//current location button 
+function getCurrentPosition(event) {
   event.preventDefault();
-  let cityInputElement = document.querySelector("#city-input");
-  search(cityInputElement.value);
+  navigator.geolocation.getCurrentPosition(searchLocation);
 }
+let currentLocation = document.querySelector("#current-location");
+currentLocation.addEventListener("click", getCurrentPosition);
+
+
+
 
 function displayFahrenheitTemp(event) {
   event.preventDefault();
@@ -168,4 +179,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 //let celsiusLink = document.querySelector("#celsius-link");
 //celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-search("Nashville");
+search("New Mexico");
